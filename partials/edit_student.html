@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Edit/Delete Student with ID: {{students.student_id}}</h3>
+
+<div class="form-group">
+    <label for="student_id">Student ID:</label>
+    <input type="text" class="form-control" id="student_id" data-ng-model="student_id">
+</div>
+
+<p><button type="button" class="btn btn-primary" data-ng-click="getRecord()"> Get Student Info </button> </p>
+
+<div class='row'>
+
+    <div class="col-md-6">
+
+        <div class="form-group">
+            <label for="first">First Name:</label>
+            <input type="text" class="form-control" id="first" data-ng-model="students.first_name">
+        </div>
+        <div class="form-group">
+            <label for="last">Last Name:</label>
+            <input type="text" class="form-control" id="last" data-ng-model="students.last_name">
+        </div>
+        <div class="form-group">
+            <label for="hrs_comp">Hrs Completed:</label>
+            <input type="text" class="form-control" id="hrs_comp" data-ng-model= "students.hrs_completed">
+        </div>
+        <div class="form-group">
+            <label for="hrs_attempt">Hrs Attempted:</label>
+            <input type="text" class="form-control" id="hrs_attempt" data-ng-model= "students.hrs_attempted">
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="form-group">
+            <label for="gpa_pts">GPA Points:</label>
+            <input type="text" class="form-control" id="gpa_pts" data-ng-model= "students.gpa_points">
+        </div>
+        <div class="form-group">
+            <label for="major">Major:</label>
+            <input type="text" class="form-control" id="major" data-ng-model="students.major">
+        </div>
+        <div class="form-group">
+            <label for="advisor">Advisor ID:</label>
+            <input type="text" class="form-control" id="advisor" data-ng-model="students.advisor_id">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" class="form-control" id="email" data-ng-model="students.email">
+        </div>
+
+    </div>
+
+    <button type="button" class="btn btn-primary" data-ng-click="updateRecord()">Update</button> &nbsp;
+    <button type="button" class="btn btn-primary" data-ng-click="deleteRecord()">Delete</button>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Students</title>
+</head>
+<body>
+<h2>Students</h2>
+<p><input type="text" data-ng-model='searchFilter' > Enter Search Text</p>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Student ID</th>
+        <th>Last Name</th>
+        <th>First Name</th>
+        <th>Hrs. Attempted</th>
+        <th>Hrs. Completed</th>
+        <th>GPA Points</th>
+        <th>Major</th>
+        <th>Advisor ID</th>
+        <th>Email</th>
+    </tr>
+    <tr data-ng-repeat="student in students | filter : searchFilter ">
+        <td>{{student.student_id}}</td>
+        <td>{{student.last_name}}</td>
+        <th>{{student.first_name}}</th>
+        <th>{{student.hrs_attempted}}</th>
+        <th>{{student.hrs_completed}}</th>
+        <th>{{student.gpa_points}}</th>
+        <th>{{student.major}}</th>
+        <th>{{student.advisor_id}}</th>
+        <th>{{student.email}}</th>
+    </tr>
+</table>
+</body>
+</html>
