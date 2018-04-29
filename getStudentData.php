@@ -39,10 +39,10 @@ catch ( PDOException $e ) {
             $sql = "INSERT INTO students VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $st = $conn->prepare($sql);
             $st->execute(array($id, $fn, $ln, $co, $at, $po, $ma, $ad, $em));
-
         }
+
         elseif(isset($_GET['sql']) && $_GET['sql']=='update') {
-            $id = $_GET['student_id'];
+            $id = $_GET['sid'];
             $fn = $_GET['first_name'];
             $ln = $_GET['last_name'];
             $co = $_GET['hrs_completed'];
@@ -52,16 +52,16 @@ catch ( PDOException $e ) {
             $ad = $_GET['advisor_id'];
             $em = $_GET['email'];
 
-            $sql = "UPDATE students SET student_id = ?, first_name = ?, last_name = ?, hrs_completed = ?, hrs_attempted = ?, gpa_points = ?, major = ?, advisor_id = ?, email = ? WHERE student_id = $id";
+            $sql = "UPDATE students SET first_name = ?, last_name = ?, hrs_completed = ?, hrs_attempted = ?, gpa_points = ?, major = ?, advisor_id = ?, email = ? WHERE student_id = $id";
             $st = $conn->prepare($sql);
-            $st->execute(array($id, $fn, $ln, $co, $at, $po, $ma, $ad, $em));
+            $st->execute(array($fn, $ln, $co, $at, $po, $ma, $ad, $em));
 
             returnStudents();
         }
         elseif(isset($_GET['sql']) && $_GET['sql']=='delete') {
-            $student_id = $_GET['student_id'];
+            $id = $_GET['sid'];
 
-            $sql = "DELETE FROM students WHERE student_id = $student_id";
+            $sql = "DELETE FROM students WHERE student_id = $id";
             $r = $conn->exec( $sql );
 
             returnStudents();

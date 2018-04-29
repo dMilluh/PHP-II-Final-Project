@@ -51,7 +51,7 @@ app.controller('addCtrl', function($scope, $http) {
         params += "&last_name=" + $scope.last_name;
         params += "&hrs_completed=" + $scope.hrs_completed;
         params += "&hrs_attempted=" + $scope.hrs_attempted;
-        params += "&_gpapoints=" + $scope.gpa_points;
+        params += "&gpa_points=" + $scope.gpa_points;
         params += "&major=" + $scope.major;
         params += "&advisor_id=" + $scope.advisor_id;
         params += "&email=" + $scope.email;
@@ -73,37 +73,25 @@ app.controller('editCtrl', function($scope, $http) {
         });
 
     $scope.getRecord = function() {
-        params = "sql=get";
-        params += "&student_id=" + $scope.student_id;
-        params += "&first=" + $scope.first_name;
-        params += "&last=" + $scope.last_name;
-        params += "&completed=" + $scope.hrs_completed;
-        params += "&attempted=" + $scope.hrs_attempted;
-        params += "&points=" + $scope.gpa_points;
-        params += "&major=" + $scope.major;
-        params += "&advisor=" + $scope.advisor_id;
-        params += "&email=" + $scope.email;
+        id = $scope.sid;
 
-        url = "getStudentData.php?" + params;
-        $http.get(url)
-            .then(function (response) {
-                $scope.students = response.data;
-            });
-    };
+        $scope.student = $scope.students[0];
+};
 
     $scope.updateRecord = function() {
         params = "sql=update";
-        params += "&student_id=" + $scope.student_id;
-        params += "&first=" + $scope.first_name;
-        params += "&last=" + $scope.last_name;
-        params += "&completed=" + $scope.hrs_completed;
-        params += "&attempted=" + $scope.hrs_attempted;
-        params += "&points=" + $scope.gpa_points;
-        params += "&major=" + $scope.major;
-        params += "&advisor=" + $scope.advisor_id;
-        params += "&email=" + $scope.email;
+        params += "&sid=" + $scope.sid;
+        params += "&first_name=" + $scope.student.first_name;
+        params += "&last_name=" + $scope.student.last_name;
+        params += "&hrs_completed=" + $scope.student.hrs_completed;
+        params += "&hrs_attempted=" + $scope.student.hrs_attempted;
+        params += "&gpa_points=" + $scope.student.gpa_points;
+        params += "&major=" + $scope.student.major;
+        params += "&advisor_id=" + $scope.student.advisor_id;
+        params += "&email=" + $scope.student.email;
 
         url = "getStudentData.php?" + params;
+
         $http.get(url)
             .then(function (response) {
                 $scope.students = response.data;
@@ -112,10 +100,11 @@ app.controller('editCtrl', function($scope, $http) {
 
     $scope.deleteRecord = function() {
         params = "sql=delete";
-        tempID = $scope.student_id;
-        params += "&student_id=" + tempID;
+        tempID = $scope.sid;
+        params += "&sid=" + tempID;
 
         url = "getStudentData.php?" + params;
+
         $http.get(url)
             .then(function (response) {
                 $scope.students = response.data;
