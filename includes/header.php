@@ -1,20 +1,3 @@
-<?php
-
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$dbname = "student_data";
-
-try {
-    $conn = new PDO("mysql:host=$hostname;dbname=$dbname;charset=utf8", $username, $password);
-    $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-}
-
-catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
