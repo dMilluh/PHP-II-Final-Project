@@ -72,10 +72,8 @@ app.controller('editCtrl', function($scope, $http) {
             $scope.students = response.data;
         });
 
-    $scope.getRecord = function(sid) {
-        id = sid;
-
-        $scope.student = $scope.students.find(s=>s.id == sid);
+    $scope.getRecord = function() {
+        $scope.student = $scope.students.find(s=>s.student_id ===  $scope.sid);
 
         console.log($scope.student);
     };
