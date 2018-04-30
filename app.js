@@ -72,11 +72,13 @@ app.controller('editCtrl', function($scope, $http) {
             $scope.students = response.data;
         });
 
-    $scope.getRecord = function() {
-        id = $scope.sid;
+    $scope.getRecord = function(sid) {
+        id = sid;
 
-        $scope.student = $scope.students[0];
-};
+        $scope.student = $scope.students.find(s=>s.id == sid);
+
+        console.log($scope.student);
+    };
 
     $scope.updateRecord = function() {
         params = "sql=update";
